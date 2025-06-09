@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SGM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body">
+<div class="login-container-page modern">
+    <h1>Faça seu Login.</h1>
+    <form id="fakeLoginForm">
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Seu email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Sua senha" required>
+        </div>
+        <div class="login-roles">
+            <button type="button" class="role-button" id="btnCliente">Clientes</button>
+            <button type="button" class="role-button" id="btnTecnico">Técnico</button>
+            <button type="button" class="role-button" id="btnAdmin">Administrador</button>
+        </div>
+        <button type="submit" class="gradient-button">Entrar</button>
+    </form>
+    <div class="login-footer">
+        2025 | Desenvolvido por SGM
+    </div>
+</div>
+<script>
+    let selectedRole = ''; // Variável para armazenar o ID do botão da função selecionada
+
+    // --- LÓGICA PARA MARCAR BOTÕES DE FUNÇÃO E SALVAR A ESCOLHA ---
+    const roleButtons = document.querySelectorAll('.role-button');
+
+    roleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove a classe 'active' de todos os botões de função
+            roleButtons.forEach(btn => btn.classList.remove('role-button-active'));
+            // Adiciona a classe 'active' apenas ao botão clicado
+            this.classList.add('role-button-active');
+
+            selectedRole = this.id; // Salva o ID do botão (ex: 'btnCliente', 'btnTecnico', 'btnAdmin')
+            localStorage.setItem('userRole', selectedRole); // Salva a função no localStorage
+
+            console.log('Função selecionada (ID):', selectedRole);
+        });
+    });
+
+    // --- LÓGICA DO FORMULÁRIO DE LOGIN ---
+    document.getElementById('fakeLoginForm')?.addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede o envio padrão do formulário
+
+        const loggedInUserEmail = document.getElementById('email').value || 'Usuário Padrão';
+        localStorage.setItem('loggedInUser', loggedInUserEmail);
+
+        // Pega a função que foi salva no localStorage quando o botão de função foi clicado
+        const currentRole = localStorage.getItem('userRole');
+
+        if (!currentRole) {
+            alert('Por favor, selecione uma função (Cliente, Técnico ou Administrador) antes de entrar.');
+            return; // Interrompe a execução se nenhuma função foi selecionada
+        }
+
+        // Redireciona com base na função
+        switch (currentRole) {
+            case 'btnCliente':
+                window.location.href = 'cliente_criar_ordem.html';
+                break;
+            case 'btnTecnico':
+                window.location.href = 'tecnico_dashboard.html';
+                break;
+            case 'btnAdmin':
+                window.location.href = 'admin_dashboard.html';
+                break;
+            default:
+                // Isso não deveria acontecer se os IDs dos botões estiverem corretos
+                alert('Função desconhecida selecionada. Por favor, tente novamente.');
+                break;
+        }
+    });
+</script>
+</body>
+</html>

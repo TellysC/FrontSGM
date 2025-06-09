@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Materiais - Gestão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo-icon">✳️</span>
+            <h1>Gestão</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" id="nav-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="usuarios.html" class="nav-item" id="nav-usuarios"><i class="fas fa-users"></i> Usuários</a>
+            <a href="adicionar-materiais.html" class="nav-item" id="nav-adicionar-materiais"><i class="fas fa-plus-square"></i> Adicionar Materiais</a>
+            <a href="conteineres.html" class="nav-item" id="nav-conteineres"><i class="fas fa-box"></i> Contêineres</a>
+            <a href="inventario.html" class="nav-item" id="nav-inventario"><i class="fas fa-boxes"></i> Inventário</a>
+            <a href="relatorios.html" class="nav-item" id="nav-relatorios"><i class="fas fa-chart-line"></i> Relatórios</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="nav-item" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </aside>
+    <main class="content">
+        <header class="content-header">
+            <button id="sidebarToggleBtn" class="sidebar-toggle-btn"><i class="fas fa-bars"></i></button>
+            <h2><i class="fas fa-plus-square"></i> Adição de Materiais</h2>
+        </header>
+        <div class="form-container">
+            <form id="formAdicionarMaterial">
+                <div class="input-group">
+                    <label for="itemMaterial">Item:</label>
+                    <input type="text" id="itemMaterial" required>
+                </div>
+                <div class="input-group">
+                    <label for="descricaoMaterial">Descrição:</label>
+                    <input type="text" id="descricaoMaterial" required>
+                </div>
+                <div class="input-group">
+                    <label for="containerMaterial">Container:</label>
+                    <select id="containerMaterial" required>
+                        <option value="">Selecione um Contêiner</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="quantidadeMaterial">Quantidade:</label>
+                    <input type="number" id="quantidadeMaterial" min="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="observacaoMaterial">Observação:</label>
+                    <textarea id="observacaoMaterial"></textarea>
+                </div>
+                <button type="submit">Adicionar</button>
+                <p id="materialMessage" class="message"></p>
+            </form>
+        </div>
+        <div class="table-container">
+            <h3>Materiais Adicionados</h3>
+            <table id="tabelaMateriaisAdicionados">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Descrição</th>
+                    <th>Container</th>
+                    <th>Quantidade</th>
+                    <th>Observação</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

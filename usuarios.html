@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Gestão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo-icon">✳️</span>
+            <h1>SGM</h1> </div>
+        <nav class="sidebar-nav">
+            <a href="./admin_dashboard.html" class="nav-item"><i class="fas fa-user-shield"></i> Dashboard Admin</a>
+            <a href="./usuarios.html" class="nav-item"><i class="fas fa-users-cog"></i> Gerenciar Usuários</a>
+            <a href="./admin_cadastrar_maquinas.html" class="nav-item"><i class="fas fa-cogs"></i> Cadastrar Máquinas</a>
+            <a href="./inventario.html" class="nav-item"><i class="fas fa-boxes"></i> Inventário de Máquinas</a>
+            <a href="./relatorios_admin.html" class="nav-item"><i class="fas fa-chart-bar"></i> Relatórios Gerais</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="nav-item" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </aside>
+    <main class="content">
+        <header class="content-header">
+            <button id="sidebarToggleBtn" class="sidebar-toggle-btn"><i class="fas fa-bars"></i></button>
+            <h2><i class="fas fa-users"></i> Cadastro de Usuário</h2>
+        </header>
+        <div class="form-container">
+            <form id="formCadastroUsuario">
+                <div class="input-group">
+                    <label for="nomeCompleto">Nome Completo:</label>
+                    <input type="text" id="nomeCompleto" required>
+                </div>
+                <div class="input-group">
+                    <label for="emailUsuario">E-mail:</label>
+                    <input type="email" id="emailUsuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="nomeDeUsuario">Nome de Usuário:</label>
+                    <input type="text" id="nomeDeUsuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="senhaUsuario">Senha:</label>
+                    <input type="password" id="senhaUsuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmarSenhaUsuario">Confirmar Senha:</label>
+                    <input type="password" id="confirmarSenhaUsuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="setorUsuario">Setor (Predefinido):</label>
+                    <input type="text" id="setorUsuario" value="Mecânica" readonly>
+                </div>
+                <button type="submit">Cadastrar</button>
+                <p id="userMessage" class="message"></p>
+            </form>
+        </div>
+        <div class="table-container users-list">
+            <h3>Usuários Cadastrados</h3>
+            <table id="tabelaUsuarios">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Usuário</th>
+                    <th>Setor</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
