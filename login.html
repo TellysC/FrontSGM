@@ -30,20 +30,20 @@
     </div>
 </div>
 <script>
-    let selectedRole = ''; // Variável para armazenar o ID do botão da função selecionada
+    let selectedRole = '';
 
     // --- LÓGICA PARA MARCAR BOTÕES DE FUNÇÃO E SALVAR A ESCOLHA ---
     const roleButtons = document.querySelectorAll('.role-button');
 
     roleButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove a classe 'active' de todos os botões de função
+
             roleButtons.forEach(btn => btn.classList.remove('role-button-active'));
-            // Adiciona a classe 'active' apenas ao botão clicado
+
             this.classList.add('role-button-active');
 
-            selectedRole = this.id; // Salva o ID do botão (ex: 'btnCliente', 'btnTecnico', 'btnAdmin')
-            localStorage.setItem('userRole', selectedRole); // Salva a função no localStorage
+            selectedRole = this.id;
+            localStorage.setItem('userRole', selectedRole);
 
             console.log('Função selecionada (ID):', selectedRole);
         });
