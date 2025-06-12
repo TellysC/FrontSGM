@@ -11,15 +11,15 @@
 <div class="app-container">
     <aside class="sidebar">
         <div class="sidebar-header">
-            <span class="logo-icon">✳️</span>
+            <span class="logo-icon"</span>
             <h1>SGM</h1>
         </div>
         <nav class="sidebar-nav">
-            <a href="admin_dashboard.html" class="nav-item"><i class="fas fa-user-shield"></i> Dashboard Admin</a>
-            <a href="usuarios.html" class="nav-item"><i class="fas fa-users-cog"></i> Gerenciar Usuários</a>
-            <a href="admin_cadastrar_maquinas.html" class="nav-item"><i class="fas fa-cogs"></i> Cadastrar Máquinas</a>
-            <a href="inventario.html" class="nav-item"><i class="fas fa-boxes"></i> Inventário de Máquinas</a>
-            <a href="relatorios_admin.html" class="nav-item active"><i class="fas fa-chart-bar"></i> Relatórios Gerais</a>
+            <a href="./admin_dashboard.html" class="nav-item"><i class="fas fa-user-shield"></i> Dashboard Admin</a>
+            <a href="./usuarios.html" class="nav-item"><i class="fas fa-users-cog"></i> Gerenciar Usuários</a>
+            <a href="./admin_cadastrar_maquinas.html" class="nav-item"><i class="fas fa-cogs"></i> Cadastrar Máquinas</a>
+            <a href="./inventario.html" class="nav-item"><i class="fas fa-boxes"></i> Inventário de Máquinas</a>
+            <a href="./relatorios_admin.html" class="nav-item active"><i class="fas fa-chart-bar"></i> Relatórios Gerais</a>
         </nav>
         <div class="sidebar-footer">
             <a href="#" class="nav-item" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -42,46 +42,49 @@
         <div class="filter-container">
             <form id="formFiltrarLogs" class="filter-form-inline">
                 <div class="input-group">
-                    <label for="filtroDataInicio">Data Início:</label>
+                    <label for="filtroDataInicio">Logs por Data Início:</label>
                     <input type="date" id="filtroDataInicio">
                 </div>
                 <div class="input-group">
-                    <label for="filtroDataFim">Data Fim:</label>
+                    <label for="filtroDataFim">Logs por Data Fim:</label>
                     <input type="date" id="filtroDataFim">
                 </div>
                 <button type="submit" id="btnFiltrarLogs">Filtrar Logs</button>
-                <button type="button" id="btnLimparFiltroLogs">Limpar</button>
+                <button type="button" id="btnLimparFiltroLogs">Limpar Filtro</button>
+
+                <!-- BOTÃO PARA APAGAR O HISTÓRICO DE LOGS -->
+                <button type="button" id="btnApagarLogs" class="danger">Apagar Histórico</button>
             </form>
         </div>
         <div class="table-container">
             <h3>Log de Movimentações do Sistema</h3>
-            <table id="tabelaRelatorios"> <thead>
-            <tr>
-                <th>Data</th>
-                <th>Usuário</th>
-                <th>Função/Setor</th>
-                <th>Ação</th>
-                <th>Entidade</th>
-                <th>Detalhes</th>
-                <th>Qtd.</th>
-            </tr>
-            </thead>
-                <tbody>
-                </tbody>
+            <table id="tabelaRelatorios">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Usuário</th>
+                    <th>Função/Setor</th>
+                    <th>Ação</th>
+                    <th>Entidade</th>
+                    <th>Detalhes</th>
+                </tr>
+                </thead>
             </table>
         </div>
 
         <div class="table-container" style="margin-top: 30px;">
             <h3>Relatórios Criados por Técnicos</h3>
-            <table id="tabelaRelatoriosTecnicosAdminView"> <thead>
-            <tr>
-                <th>Data Criação</th>
-                <th>Técnico</th>
-                <th>Título</th>
-                <th>Conteúdo (Prévia)</th>
-            </tr>
-            </thead>
+            <table id="tabelaRelatoriosTecnicosAdminView">
+                <thead>
+                <tr>
+                    <th>Data Criação</th>
+                    <th>Técnico</th>
+                    <th>Título</th>
+                    <th>Conteúdo (Prévia)</th>
+                </tr>
+                </thead>
                 <tbody>
+                <!-- Conteúdo será preenchido pelo script.js -->
                 </tbody>
             </table>
         </div>
