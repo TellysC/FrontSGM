@@ -1,4 +1,7 @@
-/* Reset básico e fontes */
+
+
+/*
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -7,9 +10,6 @@ body {
     line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
 }
-
-/* === ESTILOS MODERNOS PARA A PÁGINA DE LOGIN === */
-
 .login-container-page.modern .role-button:hover,
 .login-container-page.modern .role-button.role-button-active { /* Adicionada a classe .role-button-active */
     background-color: #007bff;
@@ -24,28 +24,28 @@ body.login-page-body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(circle, #1f4068, #162447); /* Fundo gradiente azul escuro */
-    color: #e0e0e0; /* Cor de texto padrão para a página de login */
-    padding: 20px; /* Adiciona um padding para evitar que o container toque as bordas em telas menores */
+    background: radial-gradient(circle, #1f4068, #162447);
+    color: #e0e0e0;
+    padding: 20px;
     box-sizing: border-box;
 }
 
 .login-container-page.modern {
-    background-color: rgba(0, 0, 0, 0.25); /* Fundo escuro semi-transparente para o container */
-    padding: 40px; /* Padding interno ajustado */
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Sombra um pouco mais intensa */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     width: 100%;
-    max-width: 420px; /* Largura máxima para o container */
+    max-width: 420px;
     text-align: center;
     box-sizing: border-box;
 }
 
 .login-container-page.modern h1 {
     color: #e0e0e0;
-    font-size: 2.2em; /* Tamanho do título ajustado */
+    font-size: 2.2em;
     margin-top: 0;
-    margin-bottom: 25px; /* Espaço abaixo do título principal */
+    margin-bottom: 25px;
     font-weight: 600;
 }
 
@@ -645,3 +645,5 @@ td .action-btn {
     pointer-events: none;
     transition: opacity 0.1s ease-out, visibility 0.1s ease-out 0.1s;
 }
+
+/*

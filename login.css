@@ -1,0 +1,112 @@
+/* =================================================== */
+/* 4. ESTILOS ESPECÍFICOS DA PÁGINA DE LOGIN         */
+/* =================================================== */
+
+body.login-page-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, #1f4068, #162447);
+    color: #e0e0e0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-container-page.modern {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-container-page.modern h1 {
+    color: #e0e0e0;
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.login-container-page.modern .login-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.login-container-page.modern .role-button {
+    background-color: rgba(0, 123, 255, 0.15);
+    color: #009bff;
+    border: 1px solid #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: .95em;
+    transition: background-color .3s ease, color .3s ease, transform .2s ease;
+    flex-grow: 1;
+    min-width: 100px;
+}
+
+.login-container-page.modern .role-button:hover,
+.login-container-page.modern .role-button.role-button-active {
+    background-color: #007bff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.login-container-page.modern .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-container-page.modern .input-group label {
+    display: block;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+    font-size: .9em;
+}
+
+.login-container-page.modern .input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #e0e0e0;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.login-container-page.modern .input-group input:focus {
+    outline: none;
+    border-color: #663ab6;
+    box-shadow: 0 0 0 .15rem rgba(102, 58, 182, .35);
+}
+
+.login-container-page.modern .gradient-button {
+    background: linear-gradient(to right, #007bff, #663ab6);
+    color: #fff;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    width: 100%;
+    transition: background .3s ease, transform .15s ease;
+    text-transform: uppercase;
+}
+
+.login-container-page.modern .gradient-button:hover {
+    background: linear-gradient(to right, #0056b3, #4a2c87);
+    transform: translateY(-2px);
+}

@@ -1,0 +1,120 @@
+/* =================================================== */
+/* 2. LAYOUT PRINCIPAL E ESTRUTURA                   */
+/* =================================================== */
+
+/* Layout da Aplicação (Sidebar + Conteúdo) */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,.05);
+    transition: width .3s ease-in-out, padding-left .3s ease-in-out, padding-right .3s ease-in-out, border-right-width .3s ease-in-out;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.sidebar-header .logo-image {
+    height: 32px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Estilos para colapso da sidebar */
+.app-container.sidebar-collapsed .sidebar {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-right-width: 0;
+    overflow: hidden;
+}
+
+.app-container.sidebar-collapsed .sidebar > * {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .1s ease-out, visibility .1s ease-out .1s;
+}
+
+/* Área de Conteúdo Principal */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.content-header {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.content-header h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    flex-grow: 1;
+    margin: 0;
+}
+
+/* Header da Página do Cliente (sem sidebar) */
+.client-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 25px;
+    background-color: #050a23;
+    color: #ffffff;
+    border-bottom: 1px solid #162447;
+}
+
+.client-page-header .logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.client-page-header .logo-image {
+    height: 28px;
+    width: auto;
+    margin-right: 15px;
+}
+
+/* DARK MODE para Layout */
+body.dark-mode .sidebar {
+    background-color: #162447;
+    border-right-color: #1f4068;
+}
+body.dark-mode .content {
+    background-color: #1a1a2e;
+}
+body.dark-mode .content-header h2 {
+    border-bottom-color: #1f4068;
+}
+body.dark-mode .client-page-header {
+    background-color: #0d1117;
+    border-bottom-color: #21262d;
+}

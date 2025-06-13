@@ -1,0 +1,47 @@
+/* =================================================== */
+/* 1. ESTILOS DE BASE E GLOBAIS                      */
+/* =================================================== */
+
+/* Reset básico e fontes */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f7f6; /* Fundo padrão para páginas internas */
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode (regras principais aplicadas ao body) */
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+/* Estilos de Dark Mode para elementos que herdam diretamente do body */
+body.dark-mode .sidebar-header h1,
+body.dark-mode .nav-item,
+body.dark-mode .sidebar-footer .nav-item,
+body.dark-mode .dark-mode-toggle span {
+    color: #e0e0e0;
+}
+
+body.dark-mode .content-header h2,
+body.dark-mode .sidebar-toggle-btn {
+    color: #e0e0e0;
+}
+
+body.dark-mode .card p,
+body.dark-mode .card h3,
+body.dark-mode .form-container .input-group label,
+body.dark-mode .filter-container .input-group label,
+body.dark-mode th,
+body.dark-mode td {
+    color: #e0e0e0;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #777;
+}
+
