@@ -8,15 +8,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* === ESTILOS PARA A PÁGINA DE LOGIN === */
-
-.login-container-page.modern .role-button:hover,
-.login-container-page.modern .role-button.role-button-active {
-    background-color: #007bff;
-    color: #fff;
-    transform: translateY(-2px);
-}
-
+/* === ESTILOS PARA A PÁGINA DE LOGIN (OTIMIZADO) === */
 body.login-page-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -24,13 +16,12 @@ body.login-page-body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(circle, #1f4068, #162447);
+    background-color: #162447;
     color: #e0e0e0;
-    padding: 20px;
     box-sizing: border-box;
+    padding: 20px;
 }
-
-.login-container-page.modern {
+.login-container {
     background-color: rgba(0, 0, 0, 0.25);
     padding: 40px;
     border-radius: 10px;
@@ -38,97 +29,69 @@ body.login-page-body {
     width: 100%;
     max-width: 420px;
     text-align: center;
-    box-sizing: border-box;
 }
-
-.login-container-page.modern h1 {
-    color: #e0e0e0;
+.login-container h1 {
     font-size: 2.2em;
-    margin-top: 0;
-    margin-bottom: 25px;
+    margin: 0 0 25px 0;
     font-weight: 600;
 }
-
-.login-container-page.modern .login-roles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 30px;
-    justify-content: center;
-}
-
-.login-container-page.modern .role-button {
-    background-color: rgba(0, 123, 255, 0.15);
-    color: #009bff;
-    border: 1px solid #007bff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.95em;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    flex-grow: 1;
-    min-width: 100px;
-}
-
-.login-container-page.modern .role-button:hover {
-    background-color: #007bff;
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-.login-container-page.modern .input-group {
+/* --- CAMPOS DE FORMULÁRIO --- */
+.input-group {
     margin-bottom: 20px;
     text-align: left;
 }
-
-.login-container-page.modern .input-group label {
+.input-group label {
     display: block;
     color: #b0b0b0;
     margin-bottom: 5px;
     font-size: 0.9em;
 }
-
-.login-container-page.modern .input-group input {
+.input-group input {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #007bff;
     border-radius: 5px;
     background-color: transparent;
     color: #e0e0e0;
-    box-sizing: border-box;
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
 }
-
-.login-container-page.modern .input-group input:focus {
+.input-group input:focus {
     outline: none;
-    border-color: #663ab6;
-    box-shadow: 0 0 0 0.15rem rgba(102, 58, 182, 0.35);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 0.15rem rgba(255, 255, 255, 0.35);
 }
-
-.login-container-page.modern .input-group input::placeholder {
+.input-group input::placeholder {
     color: #777;
 }
-
-.login-container-page.modern .forgot-password {
-    text-align: right;
-    margin-bottom: 25px;
+/* --- BOTÕES DE SELEÇÃO DE PERFIL --- */
+.login-roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.role-button {
+    background-color: rgba(0, 123, 255, 0.15);
+    color: #009bff;
+    border: 1px solid #007bff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 0.9em;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    text-align: center;
 }
-
-.login-container-page.modern .forgot-password a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.role-button:hover,
+.role-button.role-button-active {
+    background-color: #007bff;
+    color: #fff;
+    transform: translateY(-2px);
 }
-
-.login-container-page.modern .forgot-password a:hover {
-    color: #663ab6;
-    text-decoration: underline;
-}
-
-.login-container-page.modern .gradient-button {
-    background: linear-gradient(to right, #007bff, #663ab6);
+/* --- BOTÃO PRINCIPAL E RODAPÉ --- */
+.login-button {
+    background-color: #007bff;
     color: #fff;
     padding: 14px 20px;
     border: none;
@@ -137,38 +100,19 @@ body.login-page-body {
     font-size: 1.1em;
     font-weight: bold;
     width: 100%;
-    transition: background 0.3s ease, transform 0.15s ease;
+    transition: background-color 0.3s, transform 0.15s;
     text-transform: uppercase;
+    box-sizing: border-box;
 }
-
-.login-container-page.modern .gradient-button:hover {
-    background: linear-gradient(to right, #0056b3, #4a2c87);
+.login-button:hover {
+    background-color: #0056b3;
     transform: translateY(-2px);
 }
-
-.login-container-page.modern .create-account {
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: #b0b0b0;
-}
-
-.login-container-page.modern .create-account a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.login-container-page.modern .create-account a:hover {
-    color: #663ab6;
-    text-decoration: underline;
-}
-
-.login-container-page.modern .login-footer {
+.login-footer {
     margin-top: 40px;
     font-size: 0.8em;
     color: #777;
 }
-
 /* Dark Mode (para as páginas internas do sistema) */
 body.dark-mode {
     background-color: #050a23;

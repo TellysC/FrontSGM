@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="login-page-body">
-<div class="login-container-page modern">
+
+<div class="login-container">
     <h1>Faça seu Login.</h1>
-    <form id="fakeLoginForm">
+    <form id="loginForm">
         <div class="input-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Seu email" required>
@@ -23,49 +24,39 @@
             <button type="button" class="role-button" id="btnTecnico">Técnico</button>
             <button type="button" class="role-button" id="btnAdmin">Administrador</button>
         </div>
-        <button type="submit" class="gradient-button">Entrar</button>
+        <!-- CLASSE ATUALIZADA AQUI -->
+        <button type="submit" class="login-button">Entrar</button>
     </form>
     <div class="login-footer">
         2025 | Desenvolvido por SGM
     </div>
 </div>
+
 <script>
     let selectedRole = '';
 
-    // --- LÓGICA PARA MARCAR BOTÕES DE FUNÇÃO E SALVAR A ESCOLHA ---
     const roleButtons = document.querySelectorAll('.role-button');
+    const loginForm = document.getElementById('loginForm');
 
     roleButtons.forEach(button => {
         button.addEventListener('click', function() {
-
             roleButtons.forEach(btn => btn.classList.remove('role-button-active'));
-
             this.classList.add('role-button-active');
-
             selectedRole = this.id;
-            localStorage.setItem('userRole', selectedRole);
-
-            console.log('Função selecionada (ID):', selectedRole);
         });
     });
 
-    // --- LÓGICA DO FORMULÁRIO DE LOGIN ---
-    document.getElementById('fakeLoginForm')?.addEventListener('submit', function(e) {
-        e.preventDefault(); // Impede o envio padrão do formulário
-
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         const loggedInUserEmail = document.getElementById('email').value || 'Usuário Padrão';
         localStorage.setItem('loggedInUser', loggedInUserEmail);
 
-        // Pega a função que foi salva no localStorage quando o botão de função foi clicado
-        const currentRole = localStorage.getItem('userRole');
-
-        if (!currentRole) {
+        if (!selectedRole) {
             alert('Por favor, selecione uma função (Cliente, Técnico ou Administrador) antes de entrar.');
-            return; // Interrompe a execução se nenhuma função foi selecionada
+            return;
         }
 
-        // Redireciona com base na função
-        switch (currentRole) {
+        switch (selectedRole) {
             case 'btnCliente':
                 window.location.href = 'cliente_criar_ordem.html';
                 break;
@@ -76,8 +67,7 @@
                 window.location.href = 'admin_dashboard.html';
                 break;
             default:
-                // Isso não deveria acontecer se os IDs dos botões estiverem corretos
-                alert('Função desconhecida selecionada. Por favor, tente novamente.');
+                alert('Função desconhecida. Por favor, tente novamente.');
                 break;
         }
     });
