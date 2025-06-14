@@ -2,12 +2,12 @@
 /* 1. ESTILOS DE BASE */
 
 @font-face {
-    font-family: 'Coolvetica';
-    src: url('FrontSGM/fonts/KenyanCoffeeRg') format('opentype');
+    font-family: 'Garet';
+    src: url('FrontSGM/fonts/Garet') format('opentype');
 }
 
 body {
-    font-family: 'Coolvetica', sans-serif; /* Aplica a fonte aqui */
+    font-family: 'Garet', sans-serif; /* Aplica a fonte aqui */
     margin: 0;
     background-color: #f4f7f6; /* Fundo padrão para páginas internas */
     color: #333;

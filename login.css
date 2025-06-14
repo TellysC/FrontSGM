@@ -3,20 +3,20 @@
 /* =================================================== */
 
 body.login-page-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Garet', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(circle, #1f4068, #162447);
+    background: radial-gradient(circle, rgb(37, 37, 49), #050a23);
     color: #e0e0e0;
     padding: 20px;
     box-sizing: border-box;
 }
 
 .login-container-page.modern {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(161, 161, 255, 0.07);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
@@ -43,7 +43,7 @@ body.login-page-body {
 }
 
 .login-container-page.modern .role-button {
-    background-color: rgba(0, 123, 255, 0.15);
+    background-color: rgb(51, 52, 70);
     color: #009bff;
     border: 1px solid #007bff;
     padding: 10px 15px;
@@ -57,7 +57,7 @@ body.login-page-body {
 
 .login-container-page.modern .role-button:hover,
 .login-container-page.modern .role-button.role-button-active {
-    background-color: #007bff;
+    background-color: rgb(36, 37, 49);
     color: #fff;
     transform: translateY(-2px);
 }
@@ -88,13 +88,13 @@ body.login-page-body {
 
 .login-container-page.modern .input-group input:focus {
     outline: none;
-    border-color: #663ab6;
-    box-shadow: 0 0 0 .15rem rgba(102, 58, 182, .35);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 .15rem rgba(255, 255, 255, 0.35);
 }
 
 .login-container-page.modern .gradient-button {
-    background: linear-gradient(to right, #007bff, #663ab6);
-    color: #fff;
+    background: linear-gradient(to right, #333446, #333446);
+    color: #ffffff;
     padding: 14px 20px;
     border: none;
     border-radius: 5px;
@@ -107,6 +107,6 @@ body.login-page-body {
 }
 
 .login-container-page.modern .gradient-button:hover {
-    background: linear-gradient(to right, #0056b3, #4a2c87);
+    background: linear-gradient(to right, rgba(161, 161, 255, 0.07), rgba(161, 161, 255, 0.07));
     transform: translateY(-2px);
 }
