@@ -1,10 +1,13 @@
-/* =================================================== */
-/* 1. ESTILOS DE BASE E GLOBAIS                      */
-/* =================================================== */
 
-/* Reset básico e fontes */
+/* 1. ESTILOS DE BASE */
+
+@font-face {
+    font-family: 'Coolvetica';
+    src: url('FrontSGM/fonts/KenyanCoffeeRg') format('opentype');
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Coolvetica', sans-serif; /* Aplica a fonte aqui */
     margin: 0;
     background-color: #f4f7f6; /* Fundo padrão para páginas internas */
     color: #333;
