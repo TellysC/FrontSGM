@@ -1,80 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Relatórios - Gestão</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="layout.css">
-    <link rel="stylesheet" href="componentes.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+  </head>
 
-<body>
-<div class="app-container">
-    <aside class="sidebar">
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
         <div class="sidebar-header">
-            <span class="logo-icon">✳️</span>
-            <h1>Gestão</h1>
+          <h1>Gestão</h1>
         </div>
         <nav class="sidebar-nav">
-            <a href="dashboard.html" class="nav-item" id="nav-dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            <a href="usuarios.html" class="nav-item" id="nav-usuarios"><i class="fas fa-users"></i> Usuários</a>
-            <a href="adicionar-materiais.html" class="nav-item" id="nav-adicionar-materiais"><i class="fas fa-plus-square"></i> Adicionar Materiais</a>
-            <a href="conteineres.html" class="nav-item" id="nav-conteineres"><i class="fas fa-box"></i> Contêineres</a>
-            <a href="inventario.html" class="nav-item" id="nav-inventario"><i class="fas fa-boxes"></i> Inventário</a>
-            <a href="relatorios.html" class="nav-item" id="nav-relatorios"><i class="fas fa-chart-line"></i> Relatórios</a>
+          <a href="dashboard.html" class="nav-item" id="nav-dashboard"
+            ><i class="fas fa-tachometer-alt"></i> Dashboard</a
+          >
+          <a href="usuarios.html" class="nav-item" id="nav-usuarios"
+            ><i class="fas fa-users"></i> Usuários</a
+          >
+          <a
+            href="adicionar-materiais.html"
+            class="nav-item"
+            id="nav-adicionar-materiais"
+            ><i class="fas fa-plus-square"></i> Adicionar Materiais</a
+          >
+          <a href="conteineres.html" class="nav-item" id="nav-conteineres"
+            ><i class="fas fa-box"></i> Contêineres</a
+          >
+          <a href="inventario.html" class="nav-item" id="nav-inventario"
+            ><i class="fas fa-boxes"></i> Inventário</a
+          >
+          <a href="relatorios.html" class="nav-item" id="nav-relatorios"
+            ><i class="fas fa-chart-line"></i> Relatórios</a
+          >
         </nav>
         <div class="sidebar-footer">
-            <a href="#" class="nav-item" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            <div class="dark-mode-toggle">
-                <i class="fas fa-moon"></i>
-                <span>Dark Mode</span>
-                <label class="switch">
-                    <input type="checkbox" id="darkModeSwitch">
-                    <span class="slider round"></span>
-                </label>
-            </div>
+          <a href="#" class="nav-item" id="logoutButton"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+          <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch" />
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-    </aside>
-    <main class="content">
+      </aside>
+      <main class="content">
         <header class="content-header">
-            <button id="sidebarToggleBtn" class="sidebar-toggle-btn"><i class="fas fa-bars"></i></button>
-            <h2><i class="fas fa-chart-line"></i> Log de Movimentações</h2>
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2><i class="fas fa-chart-line"></i> Log de Movimentações</h2>
         </header>
         <div class="filter-container">
-            <form id="formFiltrarLogs" class="filter-form-inline">
-                <div class="input-group">
-                    <label for="filtroDataInicio">Data Início:</label>
-                    <input type="date" id="filtroDataInicio">
-                </div>
-                <div class="input-group">
-                    <label for="filtroDataFim">Data Fim:</label>
-                    <input type="date" id="filtroDataFim">
-                </div>
-                <button type="submit" id="btnFiltrarLogs">Filtrar</button>
-                <button type="button" id="btnLimparFiltroLogs">Limpar</button>
-            </form>
+          <form id="formFiltrarLogs" class="filter-form-inline">
+            <div class="input-group">
+              <label for="filtroDataInicio">Data Início:</label>
+              <input type="date" id="filtroDataInicio" />
+            </div>
+            <div class="input-group">
+              <label for="filtroDataFim">Data Fim:</label>
+              <input type="date" id="filtroDataFim" />
+            </div>
+            <button type="submit" id="btnFiltrarLogs">Filtrar</button>
+            <button type="button" id="btnLimparFiltroLogs">Limpar</button>
+          </form>
         </div>
         <div class="table-container">
-            <table id="tabelaRelatorios">
-                <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Usuário</th>
-                    <th>Setor</th>
-                    <th>Ação</th>
-                    <th>Item/Entidade</th>
-                    <th>Detalhes</th>
-                    <th>Qtd.</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+          <table id="tabelaRelatorios">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Usuário</th>
+                <th>Setor</th>
+                <th>Ação</th>
+                <th>Item/Entidade</th>
+                <th>Detalhes</th>
+                <th>Qtd.</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-    </main>
-</div>
-<script src="script.js"></script>
-</body>
+      </main>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
 </html>

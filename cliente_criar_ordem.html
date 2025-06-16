@@ -1,75 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Criar Ordem de Serviço - SGM</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="layout.css">
-    <link rel="stylesheet" href="componentes.css">
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
     <style>
-        /* Estilos para o header da página do cliente */
-        .client-page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #1f4068;
-            color: #ffffff;
-            border-bottom: 4px solid #162447;
-        }
-        .client-page-header .logo-area span { margin-right: 5px; font-size: 1.5em;}
-        .client-page-header .client-actions { display: flex; align-items: center; }
-        .client-page-header .dark-mode-toggle { margin-right: 20px; color: #e0e0e0;}
-        .client-page-header #logoutButton {
-            background-color: #dc3545; color: white; border:none; padding: 10px 22px; border-radius:100px; cursor:pointer;
-        }
-        body.dark-mode .client-page-header { background-color: #0d1117; border-bottom-color: #21262d;}
+      /* Estilos para o header da página do cliente */
+      .client-page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #000000;
+        color: #ffffff;
+        border-bottom: 4px solid #162447;
+      }
+      .client-page-header .logo-area span {
+        margin-right: 5px;
+        font-size: 1.5em;
+      }
+      .client-page-header .client-actions {
+        display: flex;
+        align-items: center;
+      }
+      .client-page-header .dark-mode-toggle {
+        margin-right: 20px;
+        color: #e0e0e0;
+      }
+      .client-page-header #logoutButton {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 100px;
+        cursor: pointer;
+      }
+      body.dark-mode .client-page-header {
+        background-color: #0d1117;
+        border-bottom-color: #21262d;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header class="client-page-header">
-    <div class="logo-area">
-        <img src="./images/Logo-Sgm.png" alt="Logo da SGM">
-    </div>
-    <div class="client-actions">
+      <div class="logo-area">
+        <img src="./images/Logo-Sgm.png" alt="Logo da SGM" />
+      </div>
+      <div class="client-actions">
         <div class="dark-mode-toggle">
-            <i class="fas fa-moon"></i>
-            <h3>Dark Mode:</h3>
-            <label class="switch">
-                <input type="checkbox" id="darkModeSwitch">
-                <span class="slider round"></span>
-            </label>
+          <i class="fas fa-moon"></i>
+          <h3>Dark Mode:</h3>
+          <label class="switch">
+            <input type="checkbox" id="darkModeSwitch" />
+            <span class="slider round"></span>
+          </label>
         </div>
-        <button id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</button>
-    </div>
+        <button id="logoutButton">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
     </header>
 
-<main class="content" style="margin-left: 0; max-width: 800px; margin: 20px auto;"> <header class="content-header">
-    <h1><i class="fas fa-plus-circle"></i> Criar Nova Ordem de Serviço</h1>
-</header>
-    <div class="form-container" id="criarOrdemContainer">
-        <p>Bem-vindo! Descreva abaixo o serviço ou problema para o qual você precisa de assistência.</p>
+    <main
+      class="content"
+      style="margin-left: 0; max-width: 800px; margin: 20px auto"
+    >
+      <header class="content-header">
+        <h1><i class="fas fa-plus-circle"></i> Criar Nova Ordem de Serviço</h1>
+      </header>
+      <div class="form-container" id="criarOrdemContainer">
+        <p>
+          Bem-vindo! Descreva abaixo o serviço ou problema para o qual você
+          precisa de assistência.
+        </p>
         <form id="formCriarOrdem">
-            <div class="input-group">
-                <label for="ordemDescricao">Descrição do Problema/Serviço:</label>
-                <textarea id="ordemDescricao" name="ordemDescricao" rows="5" required placeholder="Descreva detalhadamente o problema ou o serviço que você necessita..."></textarea>
-            </div>
-            <div class="input-group">
-                <label for="ordemEquipamento">Equipamento Envolvido (opcional):</label>
-                <textarea type="text" id="ordemEquipamento" name="ordemEquipamento" placeholder="Ex: Ar condicionado Carrier X, Computador Dell Inspiron Y"></textarea>
-            </div>
-            <div class="input-group">
-                <label for="ordemLocal">Local do Serviço/Equipamento (opcional):</label>
-                <textarea type="text" id="ordemLocal" name="ordemLocal" placeholder="Ex: Sala 101, Bloco B, Residência"></textarea>
-            </div>
-            <button type="submit">Enviar Ordem de Serviço</button>
-            <p id="ordemMessage" class="message"></p>
+          <div class="input-group">
+            <label for="ordemDescricao">Descrição do Problema/Serviço:</label>
+            <textarea
+              id="ordemDescricao"
+              name="ordemDescricao"
+              rows="5"
+              required
+              placeholder="Descreva detalhadamente o problema ou o serviço que você necessita..."
+            ></textarea>
+          </div>
+          <div class="input-group">
+            <label for="ordemEquipamento"
+              >Equipamento Envolvido (opcional):</label
+            >
+            <textarea
+              type="text"
+              id="ordemEquipamento"
+              name="ordemEquipamento"
+              placeholder="Ex: Ar condicionado Carrier X, Computador Dell Inspiron Y"
+            ></textarea>
+          </div>
+          <button type="submit">Enviar Ordem de Serviço</button>
+          <p id="ordemMessage" class="message"></p>
         </form>
-    </div>
-</main>
+      </div>
+    </main>
 
-<script src="script.js"></script>
-</body>
+    <script src="./js/script.js"></script>
+  </body>
 </html>

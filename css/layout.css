@@ -1,13 +1,9 @@
-/* =================================================== */
-/* 2. LAYOUT PRINCIPAL E ESTRUTURA                   */
-/* =================================================== */
 
 /* Layout da Aplicação (Sidebar + Conteúdo) */
 .app-container {
     display: flex;
     min-height: 100vh;
 }
-
 /* Sidebar */
 .sidebar {
     width: 250px;
@@ -19,7 +15,6 @@
     box-shadow: 2px 0 5px rgba(0,0,0,.05);
     transition: width .3s ease-in-out, padding-left .3s ease-in-out, padding-right .3s ease-in-out, border-right-width .3s ease-in-out;
 }
-
 .sidebar-header {
     display: flex;
     align-items: center;
@@ -105,11 +100,11 @@
 
 /* DARK MODE para Layout */
 body.dark-mode .sidebar {
-    background-color: #162447;
+    background-color: #050a23;
     border-right-color: #1f4068;
 }
 body.dark-mode .content {
-    background-color: #1a1a2e;
+    background-color: #050a23;
 }
 body.dark-mode .content-header h2 {
     border-bottom-color: #1f4068;
