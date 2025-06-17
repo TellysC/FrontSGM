@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes da Ordem de Serviço - SGM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+    <style>
+      /* Estilos específicos para esta página, se necessário */
+      .order-details-card {
+        background-color: var(--card-bg-color);
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+      }
+      .order-details-card p {
+        margin-bottom: 8px;
+        font-size: 1.05em;
+        color: var(--text-color);
+      }
+      .order-details-card p strong {
+        color: var(--primary-color);
+        margin-right: 5px;
+      }
+      .order-details-card .status-tag {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        font-size: 0.9em;
+      }
+      .order-details-card .status-aberta { background-color: #ffc107; }
+      .order-details-card .status-concluida { background-color: #28a745; }
+
+      .report-form-section {
+        margin-top: 30px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+      }
+      .report-form-section h3 {
+        color: var(--text-color);
+        margin-bottom: 20px;
+      }
+      .report-form-section button {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon"></span>
+          <h1>SGM</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="tecDashboard.html" class="nav-item"
+            ><i class="fas fa-tachometer-alt"></i> Dashboard Técnico</a
+          >
+          <a href="listaOrdemServico.html" class="nav-item active"
+            ><i class="fas fa-tools"></i> Ordens De Serviço</a
+          >
+          <a href="tecRelatorios.html" class="nav-item"
+            ><i class="fas fa-file-alt"></i> Meus Relatórios</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item" id="logoutButton"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+          <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <header class="content-header">
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2><i class="fas fa-info-circle"></i> Detalhes da Ordem de Serviço</h2>
+        </header>
+
+        <div id="orderDetailsContainer" class="order-details-card">
+          <p><strong>ID da Ordem:</strong> <span id="ordemIdDisplay"></span></p>
+          <p><strong>Data de Criação:</strong> <span id="dataCriacaoDisplay"></span></p>
+          <p><strong>Criada Por:</strong> <span id="clienteDisplay"></span></p>
+          <p><strong>Equipamento:</strong> <span id="equipamentoDisplay"></span></p>
+          <p><strong>Tipo de Manutenção:</strong> <span id="tipoManutencaoDisplay"></span></p>
+          <p><strong>Status:</strong> <span id="statusDisplay"></span></p>
+          <p><strong>Descrição:</strong> <span id="descricaoDisplay"></span></p>
+          <p id="ordemDetalheMessage" class="message"></p>
+        </div>
+
+        <div id="reportSection" class="form-container report-form-section">
+          <h3><i class="fas fa-file-alt"></i> Relatório de Conclusão</h3>
+          <p id="reportStatusMessage" class="message"></p>
+          <form id="formConcluirOrdem">
+            <div class="input-group">
+              <label for="relatorioTitulo">Título do Relatório:</label>
+              <input type="text" id="relatorioTitulo" required placeholder="Ex: Manutenção Corretiva no PC do Setor X"/>
+            </div>
+            <div class="input-group">
+              <label for="relatorioDescricao">Descrição do Relatório:</label>
+              <textarea id="relatorioDescricao" rows="5" required placeholder="Detalhes do serviço realizado, peças trocadas, observações..."></textarea>
+            </div>
+            <button type="submit" id="concluirOsSubmitBtn">Concluir Ordem e Enviar Relatório</button>
+          </form>
+        </div>
+
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="./javascript/api.js"></script>
+    <script type="module" src="./javascript/pages/detalheOrdemServicoTecnico.js"></script>
+  </body>
+</html>

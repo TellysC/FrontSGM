@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Técnico - SGM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon"></span>
+          <h1>SGM</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="tecDashboard.html" class="nav-item active"
+            ><i class="fas fa-tachometer-alt"></i> Dashboard Técnico</a
+          >
+          <a href="listaOrdemServico.html" class="nav-item"
+            ><i class="fas fa-tools"></i> Ordens De Serviço</a
+          >
+          <a href="tecRelatorios.html" class="nav-item"
+            ><i class="fas fa-file-alt"></i> Relatórios</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item" id="logoutButton"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+          <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <header class="content-header">
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2><i class="fas fa-tachometer-alt"></i> Dashboard do Técnico</h2>
+        </header>
+        <div id="tecnicoDashboardContent">
+          <p>
+            Bem-vindo, Técnico! Aqui você verá um resumo das suas atividades e
+            ordens pendentes.
+          </p>
+          <div class="dashboard-cards">
+            <div class="card">
+              <div class="card-icon"><i class="fas fa-folder-open"></i></div>
+              <div class="card-info">
+                <p>Ordens Abertas/Em Andamento</p>
+                <h3 id="count-ordens-abertas-tecnico">0</h3>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon"><i class="fas fa-users"></i></div>
+              <div class="card-info">
+                <p>Usuários Cadastrados</p>
+                <h3 id="count-usuarios-cadastrados">0</h3>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon"><i class="fas fa-desktop"></i></div>
+              <div class="card-info">
+                <p>Equipamentos Cadastrados</p>
+                <h3 id="count-equipamentos-cadastrados">0</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="./javascript/api.js"></script>
+    <script type="module" src="./javascript/main.js"></script>
+  </body>
+</html>

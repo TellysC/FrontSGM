@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Máquinas - SGM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+    <style>
+      /* Estilos para o Modal de Confirmação (copiado de detalheFuncionario.html) */
+      .custom-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .custom-modal-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .custom-modal-content {
+        background-color: var(--background-color);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+      }
+      .custom-modal-overlay.show .custom-modal-content {
+        transform: translateY(0);
+      }
+      .custom-modal-content h3 {
+        color: var(--text-color);
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.4em;
+      }
+      .custom-modal-content p {
+        color: var(--text-color-light);
+        margin-bottom: 25px;
+        font-size: 1em;
+      }
+      .custom-modal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .custom-modal-buttons button {
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+      }
+      .custom-modal-buttons .btn-confirm-delete {
+        background-color: #dc3545;
+        color: white;
+      }
+      .custom-modal-buttons .btn-confirm-delete:hover {
+        background-color: #c82333;
+      }
+      .custom-modal-buttons .btn-cancel {
+        background-color: #6c757d;
+        color: white;
+      }
+      .custom-modal-buttons .btn-cancel:hover {
+        background-color: #5a6268;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon"></span>
+          <h1>SGM</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="./admDashboard.html" class="nav-item"
+            ><i class="fas fa-user-shield"></i> Dashboard Admin</a
+          >
+          <a href="./cadastroUsuarios.html" class="nav-item active"
+            ><i class="fas fa-users-cog"></i> Gerenciar Usuários
+          </a>
+          <a href="./cadastroEquipamentos.html" class="nav-item"
+            ><i class="fas fa-cogs"></i> Cadastrar Equipamentos</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item" id="logoutButton"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+          <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <header class="content-header">
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2><i class="fas fa-cogs"></i> Cadastro de Máquinas/Equipamentos</h2>
+        </header>
+        <div class="form-container">
+          <form id="formCadastrarEquipamento">
+            <div class="input-group">
+              <label for="nomeEquipamento">Nome da Máquina/Equipamento:</label>
+              <input type="text" id="nomeEquipamento" required />
+            </div>
+            <div class="input-group">
+              <label for="descricaoEquipamento">Descrição:</label>
+              <textarea id="descricaoEquipamento" rows="3" required></textarea>
+            </div>
+            <input type="hidden" id="editEquipamentoId" value="" />
+            <button type="submit" id="submitEquipamentoBtn">Cadastrar Máquina</button>
+            <p id="equipamentoMessage" class="message"></p>
+          </form>
+        </div>
+        <div class="table-container">
+          <h3>Máquinas Cadastradas</h3>
+          <table id="tabelaEquipamentos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="equipamentosTableBody">
+                <tr><td colspan="4" style="text-align: center;">Carregando equipamentos...</td></tr>
+            </tbody>
+          </table>
+          <p id="equipamentoListMessage" class="message"></p>
+        </div>
+      </main>
+    </div>
+
+    <div id="deleteConfirmModal" class="custom-modal-overlay">
+        <div class="custom-modal-content">
+            <h3>Confirmação de Exclusão</h3>
+            <p>Tem certeza que deseja excluir este equipamento? Esta ação é irreversível.</p>
+            <div class="custom-modal-buttons">
+                <button id="confirmDeleteBtn" class="btn-confirm-delete">Sim, Excluir</button>
+                <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="./javascript/api.js"></script>
+    <script type="module" src="./javascript/pages/cadastroEquipamentos.js"></script>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Ordem de Serviço - SGM</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      /* Estilos para o header da página do cliente */
+      .client-page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #000000;
+        color: #ffffff;
+        border-bottom: 4px solid #162447;
+      }
+      .client-page-header .logo-area span {
+        margin-right: 5px;
+        font-size: 1.5em;
+      }
+      .client-page-header .client-actions {
+        display: flex;
+        align-items: center;
+      }
+      .client-page-header .dark-mode-toggle {
+        margin-right: 20px;
+        color: #e0e0e0;
+      }
+      .client-page-header #logoutButton {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 100px;
+        cursor: pointer;
+      }
+      body.dark-mode .client-page-header {
+        background-color: #0d1117;
+        border-bottom-color: #21262d;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="client-page-header">
+      <div class="logo-area">
+        <h1>SGM</h1>
+      </div>
+      <div class="client-actions">
+        <div class="dark-mode-toggle">
+          <i class="fas fa-moon"></i>
+          <h3>Dark Mode:</h3>
+          <label class="switch">
+            <input type="checkbox" id="darkModeSwitch" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <button id="logoutButton">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </header>
+
+    <main
+      class="content"
+      style="margin-left: 0; max-width: 800px; margin: 20px auto"
+    >
+      <header class="content-header">
+        <h1><i class="fas fa-plus-circle"></i> Criar Nova Ordem de Serviço</h1>
+      </header>
+      <div class="form-container" id="criarOrdemContainer">
+        <p>
+          Bem-vindo! Descreva abaixo o serviço ou problema para o qual você
+          precisa de assistência.
+        </p>
+        <form id="formCriarOrdem">
+          <div class="input-group">
+            <label for="ordemDescricao">Descrição do Problema/Serviço:</label>
+            <textarea
+              id="ordemDescricao"
+              name="ordemDescricao"
+              rows="5"
+              required
+              placeholder="Descreva detalhadamente o problema ou o serviço que você necessita..."
+            ></textarea>
+          </div>
+          <div class="input-group">
+            <label for="ordemEquipamento"
+              >Equipamento Envolvido:</label
+            >
+            <select id="ordemEquipamento" name="ordemEquipamento" required>
+              <option value="">Carregando equipamentos...</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="tipoManutencao">Tipo de Manutenção:</label>
+            <select id="tipoManutencao" name="tipoManutencao" required>
+              <option value="">Selecione o tipo</option>
+              <option value="PREVENTIVA">Preventiva</option>
+              <option value="CORRETIVA">Corretiva</option>
+            </select>
+          </div>
+
+          <button type="submit">Enviar Ordem de Serviço</button>
+          <p id="ordemMessage" class="message"></p>
+        </form>
+      </div>
+
+      <div class="table-container" style="margin-top: 30px;">
+        <header class="content-header" style="margin-bottom: 20px; border-bottom: 1px solid #eee;">
+            <h2 style="margin: 0;"><i class="fas fa-clipboard-list"></i> Minhas Ordens de Serviço</h2>
+            <div class="filter-buttons">
+                <button id="filterAbertas" class="action-btn">Abertas</button>
+                <button id="filterConcluidas" class="action-btn">Concluídas</button>
+                <button id="filterTodas" class="action-btn">Todas</button>
+            </div>
+        </header>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Descrição</th>
+              <th>Status</th>
+              <th>Tipo</th>
+              <th>Equipamento</th>
+              <th>Criado Em</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="ordensTableBody">
+            <tr><td colspan="7" style="text-align: center;">Carregando suas ordens...</td></tr>
+          </tbody>
+        </table>
+        <p id="listMessage" class="message"></p>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="./javascript/api.js"></script>
+    <script type="module" src="./javascript/pages/ordemServico.js"></script>
+  </body>
+</html>

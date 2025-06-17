@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Funcionário - SGM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+    <style>
+      /* Estilos específicos para esta página */
+      .details-form-container fieldset {
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+        background-color: var(--card-bg-color);
+      }
+      .details-form-container legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--primary-color);
+        padding: 0 10px;
+      }
+      .details-form-container .input-group label {
+        color: var(--text-color-light);
+      }
+      .details-form-container input:read-only,
+      .details-form-container select:read-only,
+      .details-form-container textarea:read-only {
+        background-color: var(--input-disabled-bg);
+        cursor: not-allowed;
+      }
+      .details-form-container .action-buttons {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+      }
+      .details-form-container .action-buttons button {
+        padding: 12px 25px;
+        font-size: 1em;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      .details-form-container .action-buttons .btn-edit {
+        background-color: #007bff;
+        color: white;
+      }
+      .details-form-container .action-buttons .btn-edit:hover {
+        background-color: #0056b3;
+      }
+      .details-form-container .action-buttons .btn-delete {
+        background-color: #dc3545;
+        color: white;
+      }
+      .details-form-container .action-buttons .btn-delete:hover {
+        background-color: #c82333;
+      }
+      .details-form-container .role-selection input[type="radio"]:read-only + label {
+          cursor: not-allowed;
+          opacity: 0.7;
+      }
+      /* Ajuste para o radio button, já que não há atributo read-only para eles diretamente */
+      .details-form-container.read-only .role-selection label {
+          cursor: not-allowed;
+          opacity: 0.7;
+      }
+      .details-form-container.read-only .role-selection input[type="radio"] {
+          pointer-events: none; /* Desabilita clique no radio button */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon"></span>
+          <h1>SGM</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="./admDashboard.html" class="nav-item"><i class="fas fa-user-shield"></i> Dashboard Admin</a>
+          <a href="./cadastroUsuarios.html" class="nav-item active"><i class="fas fa-users-cog"></i> Gerenciar Usuários</a>
+          <a href="./cadastroEquipamentos.html" class="nav-item"><i class="fas fa-cogs"></i> Cadastrar Equipamentos</a>
+          <a href="./admInventario.html" class="nav-item"><i class="fas fa-boxes"></i> Inventário de Equipamentos</a>
+          <a href="./admRelatorios.html" class="nav-item"><i class="fas fa-chart-bar"></i> Relatórios Gerais</a>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item" id="logoutButton"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+          <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <header class="content-header">
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2><i class="fas fa-user"></i> Detalhes do Funcionário</h2>
+        </header>
+
+        <div class="form-container details-form-container" id="funcionarioDetailsFormContainer">
+            <p id="funcionarioMessage" class="message"></p>
+            <form id="formFuncionarioDetails">
+                <fieldset>
+                    <legend>Dados de Acesso</legend>
+                    <div class="input-group">
+                        <label for="emailUsuario">E-mail:</label>
+                        <input type="email" id="emailUsuario" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="senhaUsuario">Senha:</label>
+                        <input type="password" id="senhaUsuario" placeholder="Preencha para alterar" readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmarSenhaUsuario">Confirmar Nova Senha:</label>
+                        <input type="password" id="confirmarSenhaUsuario" placeholder="Preencha para alterar" readonly />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+                    <div class="input-group">
+                        <label for="funcionarioId">ID do Funcionário:</label>
+                        <input type="text" id="funcionarioId" readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="nomeCompleto">Nome Completo:</label>
+                        <input type="text" id="nomeCompleto" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label>Função do Utilizador (Cargo):</label>
+                        <div class="role-selection">
+                            <input type="radio" id="roleCliente" name="userRoleForm" value="Cliente" disabled />
+                            <label for="roleCliente">Cliente</label>
+                            <input type="radio" id="roleTecnico" name="userRoleForm" value="Técnico" disabled />
+                            <label for="roleTecnico">Técnico</label>
+                            <input type="radio" id="roleAdmin" name="userRoleForm" value="Administrador" disabled />
+                            <label for="roleAdmin">Administrador</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contacto</legend>
+                    <div class="input-group">
+                        <label for="ddd">DDD:</label>
+                        <input type="text" id="ddd" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="celular">Celular:</label>
+                        <input type="text" id="celular" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="telefone">Telefone (opcional):</label>
+                        <input type="text" id="telefone" readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="estadoDdd">Estado (DDD):</label>
+                        <input type="text" id="estadoDdd" required readonly />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <div class="input-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="logradouro">Logradouro (Rua, Av.):</label>
+                        <input type="text" id="logradouro" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" id="bairro" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="estado">Estado:</label>
+                        <input type="text" id="estado" required readonly />
+                    </div>
+                    <div class="input-group">
+                        <label for="pais">País:</label>
+                        <input type="text" id="pais" required readonly />
+                    </div>
+                </fieldset>
+
+                <div class="action-buttons">
+                    <button type="button" id="editButton" class="btn-edit">Editar</button>
+                    <button type="button" id="deleteButton" class="btn-delete">Excluir</button>
+                </div>
+            </form>
+        </div>
+        <button id="backToListButton" class="back-button">Voltar para a Lista de Funcionários</button>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="./javascript/api.js"></script>
+    <script type="module" src="./javascript/pages/detalheFuncionario.js"></script>
+  </body>
+</html>

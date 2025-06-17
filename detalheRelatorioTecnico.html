@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Relatório - SGM</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/componentes.css" />
+    <style>
+      /* Estilos específicos para esta página */
+      .report-details-card {
+        background-color: var(--card-bg-color);
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+      }
+      .report-details-card p {
+        margin-bottom: 8px;
+        font-size: 1.05em;
+        color: var(--text-color);
+      }
+      .report-details-card p strong {
+        color: var(--primary-color);
+        margin-right: 5px;
+      }
+      .report-details-card .report-content {
+        background-color: var(--background-color-darker);
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid var(--border-color);
+        white-space: pre-wrap; /* Preserva quebras de linha e espaços */
+        word-wrap: break-word; /* Quebra palavras longas */
+        margin-top: 10px;
+      }
+      .back-button {
+        background-color: #6c757d; /* Cinza */
+        color: white;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.95em;
+        font-weight: 500;
+        transition: background-color 0.2s ease-in-out;
+        margin-top: 20px;
+      }
+      .back-button:hover {
+        background-color: #5a6268;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon"></span>
+          <h1>SGM</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="tecDashboard.html" class="nav-item"
+            ><i class="fas fa-tachometer-alt"></i> Dashboard Técnico</a
+          >
+          <a href="listaOrdemServico.html" class="nav-item"
+            ><i class="fas fa-tools"></i> Ordens De Serviço</a
+          >
+          <a href="tecRelatorios.html" class="nav-item active"
+            ><i class="fas fa-file-alt"></i> Meus Relatórios</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item" id="logoutButton"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+          <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="darkModeSwitch" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <main class="content">
+        <header class="content-header">
+          <button id="sidebarToggleBtn" class="sidebar-toggle-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h2><i class="fas fa-file-alt"></i> Detalhes do Relatório</h2>
+        </header>
+
+        <div id="reportDetailsContainer" class="report-details-card">
+          <p><strong>ID do Relatório:</strong> <span id="relatorioIdDisplay"></span></p>
+          <p><strong>Data de Criação:</strong> <span id="dataCriacaoDisplay"></span></p>
+          <p><strong>Título:</strong> <span id="tituloDisplay"></span></p>
+          <p><strong>Conteúdo:</strong></p>
+          <div id="conteudoDisplay" class="report-content"></div>
+          <p><strong>Ordem de Serviço Vinculada:</strong> <span id="ordemServicoIdDisplay"></span></p>
+          <p><strong>Status da Ordem de Serviço:</strong> <span id="ordemServicoStatusDisplay"></span></p>
+          <p id="relatorioDetalheMessage" class="message"></p>
+        </div>
+
+        <button id="backToListButton" class="back-button">Voltar para a Lista de Relatórios</button>
+
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="./javascript/api.js"></script>
+    <script type="module" src="./javascript/pages/detalheRelatorioTecnico.js"></script>
+  </body>
+</html>
